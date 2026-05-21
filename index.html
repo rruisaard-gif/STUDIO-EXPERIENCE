@@ -13,6 +13,7 @@
     --blue:   #1A1A8E;
     --purple: #5B2D8E;
     --orange: #F4631E;
+    --teal:   #0E7490;
     --ink:    #1A1A2E;
     --mid:    #5A5A7A;
     --muted:  #9090AA;
@@ -155,6 +156,232 @@
     transform: translateX(-100vw);
   }
 
+  .slider-track.on-3 {
+    transform: translateX(-200vw);
+  }
+
+  .nav-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+
+  .nav-btn.p3 {
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+  }
+
+  .nav-btn.p3.active {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  .nav-btn.p3 .nav-num { color: rgba(255,255,255,0.35); }
+  .nav-btn.p3 .nav-label { color: rgba(255,255,255,0.7); }
+  .nav-btn.p3 .nav-sub { color: rgba(255,255,255,0.35); }
+  .nav-btn.p3.active .nav-label { color: #fff; }
+  .nav-btn.p3.active .nav-num { color: rgba(255,255,255,0.6); }
+
+  /* page 3 specific */
+  .p3-header {
+    background: linear-gradient(135deg, #0E7490 0%, #0369A1 50%, #1E40AF 100%);
+    padding: 24px 10% 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .p3-header::after {
+    content: '';
+    position: absolute;
+    right: -40px; bottom: -40px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .check-row:last-child { border-bottom: none; }
+
+  .check-label-col {
+    flex: 1;
+  }
+
+  .check-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+
+  .check-hint {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .stoplicht {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .sl-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 5px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    opacity: 0.3;
+    background: none;
+  }
+
+  .sl-ja   { border-color: #16A34A; color: #16A34A; }
+  .sl-deels { border-color: #D97706; color: #D97706; }
+  .sl-nee  { border-color: #DC2626; color: #DC2626; }
+
+  .sl-btn.active.sl-ja   { background: #16A34A; color: #fff; opacity: 1; }
+  .sl-btn.active.sl-deels { background: #D97706; color: #fff; opacity: 1; }
+  .sl-btn.active.sl-nee  { background: #DC2626; color: #fff; opacity: 1; }
+
+  .sl-btn:not(.active):hover { opacity: 0.7; }
+
+  .sl-toelichting {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 8px;
+  }
+
+  .sl-desc {
+    font-size: 10.5px;
+    font-weight: 300;
+    line-height: 1.55;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border-left: 3px solid transparent;
+  }
+
+  .sl-desc span {
+    font-weight: 600;
+    margin-right: 3px;
+  }
+
+  .sl-desc-ja   { background: rgba(22,163,74,0.06);  border-left-color: #16A34A; color: #166534; }
+  .sl-desc-deels { background: rgba(217,119,6,0.06);  border-left-color: #D97706; color: #92400E; }
+  .sl-desc-nee  { background: rgba(220,38,38,0.06);  border-left-color: #DC2626; color: #991B1B; }
+
+  .kernvraag-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1.5px solid var(--rule);
+  }
+
+  .kernvraag-num {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .kernvraag-q {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .kernvraag-hint {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .niveau-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .niveau-opt {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 2px solid var(--rule);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .niveau-opt:hover { border-color: rgba(14,116,144,0.3); }
+
+  .niveau-opt.selected {
+    border-color: var(--teal);
+    background: rgba(14,116,144,0.05);
+  }
+
+  .niveau-radio {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(14,116,144,0.3);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .niveau-opt.selected .niveau-radio {
+    border-color: var(--teal);
+    background: var(--teal);
+  }
+
+  .niveau-opt.selected .niveau-radio::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .niveau-content { flex: 1; }
+
+  .niveau-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .niveau-desc {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .p3-slide { background: #F0F9FF; }
+
   .slide {
     width: 100vw;
     flex-shrink: 0;
@@ -174,7 +401,7 @@
   .slide::-webkit-scrollbar-thumb { background: rgba(26,26,110,0.15); border-radius: 2px; }
 
   /* ══════════════════════════════
-     PAGE — fullscreen, no card
+     PAGE fullscreen
   ══════════════════════════════ */
   .page {
     width: 100%;
@@ -902,6 +1129,14 @@
     <span class="nav-label">De koers</span>
     <span class="nav-sub">Formuleer de uitspraak</span>
   </button>
+
+  <div class="nav-sep"></div>
+
+  <button class="nav-btn p3" id="nav3" onclick="goTo(3)">
+    <span class="nav-num">03</span>
+    <span class="nav-label">Beoordelen</span>
+    <span class="nav-sub">Feedback op een medestudent</span>
+  </button>
 </nav>
 
 <!-- ══ SLIDER ══ -->
@@ -1324,6 +1559,253 @@
       </div>
     </div>
 
+    <!-- ════ SLIDE 3 — BEOORDELEN ════ -->
+    <div class="slide p3-slide">
+      <div class="page">
+
+        <div class="p3-header">
+          <div class="header-eyebrow">Studio Experience · Peer feedback</div>
+          <div class="header-title">Koers beoordelen</div>
+          <div class="header-sub">Bevraag de koers van je medestudent aan de hand van dit formulier</div>
+        </div>
+
+        <div class="body">
+
+          <!-- KOERSUITSPRAAK -->
+          <div class="section">
+            <div class="section-head">
+              <div class="section-dot" style="background:var(--teal)">K</div>
+              <div class="section-title" style="color:var(--teal)">De koersuitspraak</div>
+            </div>
+            <div class="section-hint">Noteer of plak hier de koersuitspraak van je medestudent.</div>
+            <div class="input-group">
+              <textarea rows="3" placeholder="De organisatie richt zich op... door... om... omdat..."></textarea>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- ELEMENTEN CHECK -->
+          <div class="section">
+            <div class="section-head">
+              <div class="section-dot" style="background:var(--teal)">✓</div>
+              <div class="section-title" style="color:var(--teal)">Kwaliteitscheck</div>
+            </div>
+            <div class="section-hint">Beoordeel elk criterium. Wat oranje of rood krijgt is je feedbackpunt.</div>
+            <div class="input-group" style="padding-left:0">
+
+              <!-- 0. Navolgbaarheid -->
+              <div class="check-row">
+                <div class="check-label-col">
+                  <div class="check-label">Navolgbaarheid</div>
+                  <div class="check-hint">De redenering loopt als één lijn van observatie naar koers.</div>
+                  <div class="sl-toelichting">
+                    <div class="sl-desc sl-desc-ja"><span>Ja:</span> Elke stap bouwt logisch voort op de vorige. Je kunt de redenering mondeling uitleggen zonder de poster erbij te pakken. Observaties leiden tot aannames, aannames tot probleemstelling, probleemstelling tot gat, gat tot koers.</div>
+                    <div class="sl-desc sl-desc-deels"><span>Deels:</span> De grote lijn is te volgen, maar één of meer stappen sluiten niet logisch op elkaar aan, of de verbinding tussen analyse en koers is niet expliciet gemaakt.</div>
+                    <div class="sl-desc sl-desc-nee"><span>Nee:</span> De koers staat los van de analyse. Het is onduidelijk hoe de observaties hebben geleid tot deze uitspraak.</div>
+                  </div>
+                </div>
+                <div class="stoplicht">
+                  <button class="sl-btn sl-ja" onclick="selectSl(this)">Ja</button>
+                  <button class="sl-btn sl-deels" onclick="selectSl(this)">Deels</button>
+                  <button class="sl-btn sl-nee" onclick="selectSl(this)">Nee</button>
+                </div>
+              </div>
+
+              <!-- 1. Voor wie en wat -->
+              <div class="check-row">
+                <div class="check-label-col">
+                  <div class="check-label">Voor wie en wat</div>
+                  <div class="check-hint">Zijn de relevante stakeholders benoemd en is duidelijk welke waarde de koers voor elk creëert?</div>
+                  <div class="sl-toelichting">
+                    <div class="sl-desc sl-desc-ja"><span>Ja:</span> Minimaal twee primaire stakeholders zijn benoemd. Voor elk is duidelijk welke waarde de koers creëert. De onderlinge relatie tussen die waarden is zichtbaar gemaakt.</div>
+                    <div class="sl-desc sl-desc-deels"><span>Deels:</span> Er is één stakeholder benoemd, vaak alleen de eindgebruiker. De waarde voor andere partijen (merk, afnemer, agency) ontbreekt of is te vaag omschreven.</div>
+                    <div class="sl-desc sl-desc-nee"><span>Nee:</span> Er is geen zicht op meervoudige waardecreatie. De koers richt zich op één partij zonder te benoemen wat de gevolgen zijn voor de rest van de keten.</div>
+                  </div>
+                </div>
+                <div class="stoplicht">
+                  <button class="sl-btn sl-ja" onclick="selectSl(this)">Ja</button>
+                  <button class="sl-btn sl-deels" onclick="selectSl(this)">Deels</button>
+                  <button class="sl-btn sl-nee" onclick="selectSl(this)">Nee</button>
+                </div>
+              </div>
+
+              <!-- 2. Strategische keuze -->
+              <div class="check-row">
+                <div class="check-label-col">
+                  <div class="check-label">Strategische keuze</div>
+                  <div class="check-hint">Raakt de keuze het aanbod, verdienmodel of de relatie met stakeholders?</div>
+                  <div class="sl-toelichting">
+                    <div class="sl-desc sl-desc-ja"><span>Ja:</span> De keuze beschrijft wat het merk anders doet in zijn aanbod, dienstverlening, businessmodel of relatie met stakeholders. De keuze is merkspecifiek en past niet op elk willekeurig merk in dezelfde sector.</div>
+                    <div class="sl-desc sl-desc-deels"><span>Deels:</span> De keuze raakt deels het aanbod maar blijft ook deels communicatief. Of de keuze is herkenbaar maar nog te vaag om concreet te beoordelen.</div>
+                    <div class="sl-desc sl-desc-nee"><span>Nee:</span> De keuze gaat uitsluitend over hoe het merk communiceert, niet over wat het doet of levert. Een campagne, een tone of voice of een mediakanaal is geen strategische koers.</div>
+                  </div>
+                </div>
+                <div class="stoplicht">
+                  <button class="sl-btn sl-ja" onclick="selectSl(this)">Ja</button>
+                  <button class="sl-btn sl-deels" onclick="selectSl(this)">Deels</button>
+                  <button class="sl-btn sl-nee" onclick="selectSl(this)">Nee</button>
+                </div>
+              </div>
+
+              <!-- 3. Doel -->
+              <div class="check-row">
+                <div class="check-label-col">
+                  <div class="check-label">Doel</div>
+                  <div class="check-hint">Wat levert de koers op, voor wie, en is dat concreet genoeg?</div>
+                  <div class="sl-toelichting">
+                    <div class="sl-desc sl-desc-ja"><span>Ja:</span> Het doel is concreet, tweezijdig (voor het merk én de relevante stakeholders) en in principe meetbaar over tijd. Het is duidelijk wat er verandert en voor wie.</div>
+                    <div class="sl-desc sl-desc-deels"><span>Deels:</span> Er is een doel benoemd maar het is eenzijdig (alleen voor het merk of alleen voor de consument), te abstract, of zo breed dat het op elke organisatie van toepassing zou zijn.</div>
+                    <div class="sl-desc sl-desc-nee"><span>Nee:</span> Het doel ontbreekt, of het is zo vaag ("meer relevant worden", "groeien") dat het geen richting geeft aan de koers.</div>
+                  </div>
+                </div>
+                <div class="stoplicht">
+                  <button class="sl-btn sl-ja" onclick="selectSl(this)">Ja</button>
+                  <button class="sl-btn sl-deels" onclick="selectSl(this)">Deels</button>
+                  <button class="sl-btn sl-nee" onclick="selectSl(this)">Nee</button>
+                </div>
+              </div>
+
+              <!-- 4. Onderbouwing -->
+              <div class="check-row">
+                <div class="check-label-col">
+                  <div class="check-label">Onderbouwing</div>
+                  <div class="check-hint">Verwijst naar data, trend of inzicht uit de analyse, niet alleen intuïtie?</div>
+                  <div class="sl-toelichting">
+                    <div class="sl-desc sl-desc-ja"><span>Ja:</span> Er wordt expliciet verwezen naar een specifieke bron, trend, data of inzicht uit de analyse. De onderbouwing maakt duidelijk waarom de koers juist nu noodzakelijk is en niet al eerder of later.</div>
+                    <div class="sl-desc sl-desc-deels"><span>Deels:</span> Er is een onderbouwing maar die blijft algemeen ("uit onderzoek blijkt...") zonder te vermelden welk onderzoek, welke trend of welk inzicht dat is.</div>
+                    <div class="sl-desc sl-desc-nee"><span>Nee:</span> Er is geen onderbouwing, of de koers wordt uitsluitend gerechtvaardigd met gevoel of een algemene stelling zonder enige verwijzing naar analyse of bronnen.</div>
+                  </div>
+                </div>
+                <div class="stoplicht">
+                  <button class="sl-btn sl-ja" onclick="selectSl(this)">Ja</button>
+                  <button class="sl-btn sl-deels" onclick="selectSl(this)">Deels</button>
+                  <button class="sl-btn sl-nee" onclick="selectSl(this)">Nee</button>
+                </div>
+              </div>
+
+              <!-- 5. Keuze voor richting -->
+              <div class="check-row">
+                <div class="check-label-col">
+                  <div class="check-label">Keuze voor richting</div>
+                  <div class="check-hint">Is duidelijk wat het merk bewust niet doet, en geeft dat de koers focus?</div>
+                  <div class="sl-toelichting">
+                    <div class="sl-desc sl-desc-ja"><span>Ja:</span> Het is expliciet en inhoudelijk duidelijk wat het merk loslaat. Die keuze is niet triviaal en geeft de koers focus. Je ziet direct wat het merk hiermee opoffert en waarom dat logisch is.</div>
+                    <div class="sl-desc sl-desc-deels"><span>Deels:</span> Er is een keuze benoemd maar die is te voor de hand liggend, pijnloos of zo vaag dat hij geen echte richting geeft ("we focussen minder op adverteren").</div>
+                    <div class="sl-desc sl-desc-nee"><span>Nee:</span> Er is geen keuze voor richting, of de formulering is zo algemeen dat het geen betekenis heeft voor de koers.</div>
+                  </div>
+                </div>
+                <div class="stoplicht">
+                  <button class="sl-btn sl-ja" onclick="selectSl(this)">Ja</button>
+                  <button class="sl-btn sl-deels" onclick="selectSl(this)">Deels</button>
+                  <button class="sl-btn sl-nee" onclick="selectSl(this)">Nee</button>
+                </div>
+              </div>
+
+              <!-- 6. Rechtvaardiging -->
+              <div class="check-row">
+                <div class="check-label-col">
+                  <div class="check-label">Rechtvaardiging</div>
+                  <div class="check-hint">Legt uit waarom dit de juiste prioriteit is, zonder de keuze te herhalen?</div>
+                  <div class="sl-toelichting">
+                    <div class="sl-desc sl-desc-ja"><span>Ja:</span> De rechtvaardiging is een zelfstandig argument dat uitlegt waarom juist deze keuze de juiste prioriteit is voor dit merk op dit moment. Het bouwt voort op de analyse en is niet inwisselbaar met de rest van de uitspraak.</div>
+                    <div class="sl-desc sl-desc-deels"><span>Deels:</span> Er is een rechtvaardiging maar die herhaalt grotendeels wat al eerder is gezegd, of is te kort om overtuigend te zijn als zelfstandig argument.</div>
+                    <div class="sl-desc sl-desc-nee"><span>Nee:</span> De rechtvaardiging ontbreekt, of de formulering zegt feitelijk alleen "want dat is goed voor het merk" zonder verdere onderbouwing.</div>
+                  </div>
+                </div>
+                <div class="stoplicht">
+                  <button class="sl-btn sl-ja" onclick="selectSl(this)">Ja</button>
+                  <button class="sl-btn sl-deels" onclick="selectSl(this)">Deels</button>
+                  <button class="sl-btn sl-nee" onclick="selectSl(this)">Nee</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- NIVEAUDUIDING -->
+          <div class="section">
+            <div class="section-head">
+              <div class="section-dot" style="background:var(--teal)">N</div>
+              <div class="section-title" style="color:var(--teal)">Niveauduiding</div>
+            </div>
+            <div class="section-hint">Als kompas, niet als eindoordeel.</div>
+            <div class="input-group" style="padding-left:0;">
+              <div class="niveau-options">
+
+                <div class="niveau-opt" onclick="selectNiveau(this)">
+                  <div class="niveau-radio"></div>
+                  <div class="niveau-content">
+                    <div class="niveau-label">Excellent</div>
+                    <div class="niveau-desc">Overtuigende onderbouwing, vernieuwend voor de branche, keuze voor richting scherp en verdedigbaar</div>
+                  </div>
+                </div>
+
+                <div class="niveau-opt" onclick="selectNiveau(this)">
+                  <div class="niveau-radio"></div>
+                  <div class="niveau-content">
+                    <div class="niveau-label">Gevorderd</div>
+                    <div class="niveau-desc">Meerdere perspectieven afgewogen, koers vernieuwend, keuze voor richting uitgewerkt</div>
+                  </div>
+                </div>
+
+                <div class="niveau-opt" onclick="selectNiveau(this)">
+                  <div class="niveau-radio"></div>
+                  <div class="niveau-content">
+                    <div class="niveau-label">Bekwaam</div>
+                    <div class="niveau-desc">Aanpak onderbouwd, koers logisch maar generiek, keuze voor richting aanwezig maar oppervlakkig</div>
+                  </div>
+                </div>
+
+                <div class="niveau-opt" onclick="selectNiveau(this)">
+                  <div class="niveau-radio"></div>
+                  <div class="niveau-content">
+                    <div class="niveau-label">Nog niet bekwaam</div>
+                    <div class="niveau-desc">Onvoldoende onderbouwd, geen echte kansen, koers puur communicatief, keuze voor richting ontbreekt</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- FEEDBACK -->
+          <div class="section">
+            <div class="section-head">
+              <div class="section-dot" style="background:var(--teal)">↑</div>
+              <div class="section-title" style="color:var(--teal)">Feedback</div>
+            </div>
+            <div class="section-hint">Wat wil je meegeven? Wees specifiek en constructief.</div>
+            <div class="input-group">
+              <textarea rows="4" placeholder="Jouw feedback op de koers..."></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="footer">
+          <span class="footer-left">Studio Experience 2025-2026</span>
+          <div class="progress">
+            <div class="prog-dot" id="p3a"></div>
+            <div class="prog-dot" id="p3b"></div>
+            <div class="prog-dot" id="p3c"></div>
+          </div>
+          <button class="download-btn" style="background:linear-gradient(135deg,#0E7490,#1E40AF)" onclick="downloadSessie()">⬇ Sla op</button>
+        </div>
+
+      </div>
+
+      <div class="slide-nav left">
+        <button class="slide-nav-btn" style="background:linear-gradient(135deg,#0E7490,#1E40AF)" onclick="goTo(2)">
+          <span class="slide-arrow">←</span> Terug naar de koers
+        </button>
+      </div>
+    </div>
+
   </div><!-- /slider-track -->
 </div><!-- /slider-outer -->
 
@@ -1336,18 +1818,39 @@
     const needle = document.getElementById('needle');
     const nav1 = document.getElementById('nav1');
     const nav2 = document.getElementById('nav2');
+    const nav3 = document.getElementById('nav3');
+
+    track.classList.remove('on-2', 'on-3');
+    needle.classList.remove('to-koers');
+    [nav1, nav2, nav3].forEach(n => n.classList.remove('active'));
 
     if (page === 2) {
       track.classList.add('on-2');
       needle.classList.add('to-koers');
-      nav1.classList.remove('active');
       nav2.classList.add('active');
+    } else if (page === 3) {
+      track.classList.add('on-3');
+      needle.classList.add('to-koers');
+      nav3.classList.add('active');
     } else {
-      track.classList.remove('on-2');
-      needle.classList.remove('to-koers');
       nav1.classList.add('active');
-      nav2.classList.remove('active');
     }
+  }
+
+  function toggleCheck(box) {
+    box.classList.toggle('checked');
+    box.textContent = box.classList.contains('checked') ? '✓' : '';
+  }
+
+  function selectNiveau(opt) {
+    document.querySelectorAll('.niveau-opt').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+  }
+
+  function selectSl(btn) {
+    const group = btn.closest('.stoplicht');
+    group.querySelectorAll('.sl-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
   }
 
   function updatePage1() {
