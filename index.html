@@ -806,6 +806,161 @@
 
   .download-btn:hover { opacity: 0.85; }
 
+  .pdf-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--blue);
+    background: rgba(26,26,142,0.07);
+    border: 1.5px solid rgba(26,26,142,0.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .pdf-btn:hover {
+    background: rgba(26,26,142,0.12);
+    border-color: var(--blue);
+  }
+
+  /* PDF modal */
+  .pdf-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,26,46,0.6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    padding: 16px;
+  }
+
+  .pdf-modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .pdf-modal {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 16px 48px rgba(26,26,110,0.2);
+    transform: translateY(8px);
+    transition: transform 0.2s;
+  }
+
+  .pdf-modal-overlay.open .pdf-modal {
+    transform: translateY(0);
+  }
+
+  .pdf-modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .pdf-modal-sub {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.55;
+  }
+
+  .pdf-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .pdf-step {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .pdf-step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--orange));
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pdf-step-text {
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  .pdf-step-text strong {
+    font-weight: 600;
+  }
+
+  .pdf-ios-note {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    padding: 8px 12px;
+    background: rgba(26,26,142,0.05);
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+
+  .pdf-modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .pdf-cancel {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    background: none;
+    border: 1.5px solid var(--rule);
+    border-radius: 20px;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .pdf-cancel:hover { border-color: var(--muted); }
+
+  .pdf-print {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--blue), var(--orange));
+    border: none;
+    border-radius: 20px;
+    padding: 7px 20px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .pdf-print:hover { opacity: 0.88; }
+
   /* ── BRONNEN ── */
   .bron-wrap { padding-left: 30px; margin-top: 4px; }
 
@@ -1720,6 +1875,7 @@
             <div class="prog-dot" id="p2f"></div>
           </div>
           <button class="download-btn" onclick="downloadSessie()">⬇ Sla sessie op</button>
+          <button class="pdf-btn" onclick="openPdfModal()">⎙ PDF</button>
         </div>
 
       </div>
@@ -1968,6 +2124,7 @@
             <div class="prog-dot" id="p3c"></div>
           </div>
           <button class="download-btn" style="background:linear-gradient(135deg,#0E7490,#1E40AF)" onclick="downloadSessie()">⬇ Sla op</button>
+          <button class="pdf-btn" onclick="openPdfModal()">⎙ PDF</button>
         </div>
 
       </div>
@@ -2197,5 +2354,54 @@
     }
   }
 </script>
+<!-- PDF MODAL -->
+<div class="pdf-modal-overlay" id="pdfModal" onclick="closePdfModal(event)">
+  <div class="pdf-modal">
+    <div class="pdf-modal-title">Opslaan als PDF</div>
+    <div class="pdf-modal-sub">Gebruik de afdrukfunctie van je browser om een PDF te maken.</div>
+
+    <div class="pdf-steps">
+      <div class="pdf-step">
+        <div class="pdf-step-num">1</div>
+        <div class="pdf-step-text">Klik op <strong>Afdrukken</strong> hieronder — het afdrukvenster opent.</div>
+      </div>
+      <div class="pdf-step">
+        <div class="pdf-step-num">2</div>
+        <div class="pdf-step-text"><strong>Windows / Android:</strong> kies bij "Printer" de optie <strong>Opslaan als PDF</strong>.</div>
+      </div>
+      <div class="pdf-step">
+        <div class="pdf-step-num">3</div>
+        <div class="pdf-step-text"><strong>Mac:</strong> klik linksonder op <strong>PDF</strong> en kies "Sla op als PDF".</div>
+      </div>
+    </div>
+
+    <div class="pdf-ios-note">
+      Op iPhone of iPad: tik op het deelicoon (vierkantje met pijl omhoog) en kies <strong>"Boeken"</strong> of <strong>"Sla op in Bestanden"</strong> om als PDF te bewaren.
+    </div>
+
+    <div class="pdf-modal-actions">
+      <button class="pdf-cancel" onclick="closePdfModal()">Annuleer</button>
+      <button class="pdf-print" onclick="doPrint()">⎙ Afdrukken</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openPdfModal() {
+    document.getElementById('pdfModal').classList.add('open');
+  }
+
+  function closePdfModal(e) {
+    if (!e || e.target === document.getElementById('pdfModal')) {
+      document.getElementById('pdfModal').classList.remove('open');
+    }
+  }
+
+  function doPrint() {
+    document.getElementById('pdfModal').classList.remove('open');
+    setTimeout(() => window.print(), 300);
+  }
+</script>
+
 </body>
 </html>
