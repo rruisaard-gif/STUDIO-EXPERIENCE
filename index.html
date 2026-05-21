@@ -2159,7 +2159,7 @@
 
       // Inject bronnenlijst
       const srcBronnen = document.getElementById('bronnen-body');
-      const dstBronnen = html.getElementById('bronnen-body');
+      const dstBronnen = html.querySelector('#bronnen-body');
       if (srcBronnen && dstBronnen) dstBronnen.innerHTML = srcBronnen.innerHTML;
 
       // Inject stoplicht state
@@ -2177,8 +2177,8 @@
       });
 
       // Inject current slide
-      if (current === 2) html.getElementById('track').classList.add('on-2');
-      else if (current === 3) html.getElementById('track').classList.add('on-3');
+      if (current === 2) html.querySelector('#track').classList.add('on-2');
+      else if (current === 3) html.querySelector('#track').classList.add('on-3');
 
       const merk = document.getElementById('merk').value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'koers';
       const datum = new Date().toISOString().slice(0, 10);
