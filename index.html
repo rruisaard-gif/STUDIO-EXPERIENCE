@@ -2134,33 +2134,67 @@
   }
 
   function downloadSessie() {
-    const html = document.documentElement.cloneNode(true);
-    const srcTA = document.querySelectorAll('textarea');
-    const dstTA = html.querySelectorAll('textarea');
-    srcTA.forEach((s, i) => { dstTA[i].textContent = s.value; });
-    const srcIN = document.querySelectorAll('input[type="text"]');
-    const dstIN = html.querySelectorAll('input[type="text"]');
-    srcIN.forEach((s, i) => { dstIN[i].setAttribute('value', s.value); });
-    const srcED = document.querySelectorAll('[contenteditable="true"]');
-    const dstED = html.querySelectorAll('[contenteditable="true"]');
-    srcED.forEach((s, i) => { dstED[i].textContent = s.textContent; });
-    document.querySelectorAll('.bron-fields').forEach((s, i) => {
-      if (s.classList.contains('open')) html.querySelectorAll('.bron-fields')[i].classList.add('open');
-    });
-    const srcBronnen = document.getElementById('bronnen-body');
-    const dstBronnen = html.getElementById('bronnen-body');
-    if (srcBronnen && dstBronnen) dstBronnen.innerHTML = srcBronnen.innerHTML;
-    // inject current slide state
-    if (current === 2) html.getElementById('track').classList.add('on-2');
-    const merk = document.getElementById('merk').value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'koers';
-    const datum = new Date().toISOString().slice(0, 10);
-    const str = '<!DOCTYPE html>\n' + new XMLSerializer().serializeToString(html);
-    const blob = new Blob([str], { type: 'text/html;charset=utf-8' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `koersbepaling_${merk}_${datum}.html`;
-    a.click();
-    URL.revokeObjectURL(a.href);
+    try {
+      const html = document.documentElement.cloneNode(true);
+
+      // Inject textarea values
+      const srcTA = document.querySelectorAll('textarea');
+      const dstTA = html.querySelectorAll('textarea');
+      srcTA.forEach((s, i) => { dstTA[i].textContent = s.value; });
+
+      // Inject input values
+      const srcIN = document.querySelectorAll('input[type="text"]');
+      const dstIN = html.querySelectorAll('input[type="text"]');
+      srcIN.forEach((s, i) => { dstIN[i].setAttribute('value', s.value); });
+
+      // Inject contenteditable values
+      const srcED = document.querySelectorAll('[contenteditable="true"]');
+      const dstED = html.querySelectorAll('[contenteditable="true"]');
+      srcED.forEach((s, i) => { dstED[i].textContent = s.textContent; });
+
+      // Inject open bron-fields state
+      document.querySelectorAll('.bron-fields').forEach((s, i) => {
+        if (s.classList.contains('open')) html.querySelectorAll('.bron-fields')[i].classList.add('open');
+      });
+
+      // Inject bronnenlijst
+      const srcBronnen = document.getElementById('bronnen-body');
+      const dstBronnen = html.getElementById('bronnen-body');
+      if (srcBronnen && dstBronnen) dstBronnen.innerHTML = srcBronnen.innerHTML;
+
+      // Inject stoplicht state
+      document.querySelectorAll('.sl-btn.active').forEach(btn => {
+        const idx = [...document.querySelectorAll('.sl-btn')].indexOf(btn);
+        const dstBtn = html.querySelectorAll('.sl-btn')[idx];
+        if (dstBtn) dstBtn.classList.add('active');
+      });
+
+      // Inject niveau state
+      document.querySelectorAll('.niveau-opt.selected').forEach(opt => {
+        const idx = [...document.querySelectorAll('.niveau-opt')].indexOf(opt);
+        const dstOpt = html.querySelectorAll('.niveau-opt')[idx];
+        if (dstOpt) dstOpt.classList.add('selected');
+      });
+
+      // Inject current slide
+      if (current === 2) html.getElementById('track').classList.add('on-2');
+      else if (current === 3) html.getElementById('track').classList.add('on-3');
+
+      const merk = document.getElementById('merk').value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'koers';
+      const datum = new Date().toISOString().slice(0, 10);
+      const str = '<!DOCTYPE html>\n' + new XMLSerializer().serializeToString(html);
+      const blob = new Blob([str], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `koersbepaling_${merk}_${datum}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 3000);
+    } catch (err) {
+      alert('Opslaan mislukt: ' + err.message);
+    }
   }
 </script>
 </body>
