@@ -250,31 +250,32 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 2px;
+    flex-wrap: nowrap;
   }
 
   .section-dot {
-    width: 22px; height: 22px;
+    width: 26px; height: 26px;
     border-radius: 50%;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     color: #fff;
   }
 
   .section-title {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
   }
 
   .section-hint {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--muted);
     font-weight: 300;
-    line-height: 1.6;
-    padding-left: 30px;
+    line-height: 1.65;
+    padding-left: 34px;
   }
 
   .section-hint em {
@@ -284,24 +285,24 @@
   }
 
   .section-why {
-    font-size: 9.5px;
+    font-size: 11px;
     color: var(--blue);
     font-weight: 400;
     line-height: 1.55;
-    padding-left: 30px;
+    padding-left: 34px;
     opacity: 0.55;
     font-style: italic;
   }
 
   .input-group {
-    padding-left: 30px;
+    padding-left: 34px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
 
   .prefix {
-    font-size: 9px;
+    font-size: 11px;
     color: var(--muted);
     font-style: italic;
     font-weight: 300;
@@ -309,21 +310,21 @@
 
   textarea, input[type="text"] {
     font-family: 'Poppins', sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 400;
     color: var(--ink);
     background: #fff;
     border: 1.5px solid var(--rule);
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 10px 14px;
     resize: vertical;
     width: 100%;
-    line-height: 1.6;
+    line-height: 1.65;
     transition: border-color 0.15s, box-shadow 0.15s;
     outline: none;
   }
 
-  textarea { min-height: 44px; }
+  textarea { min-height: 64px; }
 
   textarea:focus, input:focus {
     border-color: var(--blue);
@@ -331,10 +332,10 @@
   }
 
   .obs-grid {
-    padding-left: 30px;
+    padding-left: 34px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
   }
 
   .obs-row {
@@ -551,7 +552,8 @@
   .k6 { background: #F4631E; }
 
   .k-inner { display: flex; flex-direction: column; gap: 4px; }
-  .k-head { display: flex; align-items: baseline; gap: 6px; }
+  .k-head { display: flex; align-items: baseline; gap: 6px; flex-wrap: nowrap; }
+  .k-head .need-more { margin-left: auto; align-self: center; }
   .k-num { font-size: 9px; font-weight: 700; color: var(--muted); }
   .k-name { font-size: 13px; font-weight: 600; }
   .k-hint { font-size: 10px; color: var(--muted); font-weight: 300; line-height: 1.5; }
@@ -753,6 +755,91 @@
 
   .slide-arrow { font-size: 16px; }
 
+  /* ── NEED MORE TOOLTIP ── */
+  .need-more {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--muted);
+    background: rgba(26,26,142,0.06);
+    border: 1px solid rgba(26,26,142,0.15);
+    border-radius: 20px;
+    padding: 3px 10px;
+    cursor: default;
+    user-select: none;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .need-more:hover {
+    background: rgba(26,26,142,0.12);
+    color: var(--blue);
+    border-color: rgba(26,26,142,0.3);
+  }
+
+  .need-more-chevron {
+    font-size: 10px;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .need-more:hover .need-more-chevron {
+    transform: rotate(90deg);
+  }
+
+  .need-more-popup {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 280px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(26,26,110,0.18);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .need-more:hover .need-more-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .need-more-popup-title {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .need-more-q {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.55;
+    padding-left: 10px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .need-more-popup:hover .need-more-q:hover {
+    border-left-color: var(--orange);
+  }
+
   @media print {
     html, body { height: auto; overflow: visible; }
     .nav { display: none; }
@@ -860,6 +947,14 @@
             <div class="section-head">
               <div class="section-dot" style="background:#1A1A8E">1</div>
               <div class="section-title" style="color:#1A1A8E">Observaties</div>
+              <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                <div class="need-more-popup">
+                  <div class="need-more-popup-title">Denkvragen</div>
+                  <div class="need-more-q">Beschrijf je wat je <em>ziet</em>, of wat je <em>denkt</em> dat het betekent?</div>
+                  <div class="need-more-q">Zou iemand die deze campagne nog nooit heeft gezien hetzelfde opschrijven?</div>
+                  <div class="need-more-q">Welke methode heb je gebruikt om de campagne te analyseren?</div>
+                </div>
+              </div>
             </div>
             <div class="section-hint">Wat zie je feitelijk in de campagne? Puur beschrijvend, geen oordeel. <em>Zou iemand anders hetzelfde opschrijven?</em></div>
             <div class="section-why">Observaties zijn je bewijs. Ze verankeren de rest van de redenering in wat er werkelijk te zien is.</div>
@@ -886,6 +981,14 @@
             <div class="section-head">
               <div class="section-dot" style="background:#3B2A9E">2</div>
               <div class="section-title" style="color:#3B2A9E">Aannames</div>
+              <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                <div class="need-more-popup">
+                  <div class="need-more-popup-title">Denkvragen</div>
+                  <div class="need-more-q">Waarom zou dit bureau juist <em>deze</em> keuze hebben gemaakt, en niet een andere?</div>
+                  <div class="need-more-q">Past deze aanname ook op een merk als HEMA of Rituals? Zo ja, maak hem scherper.</div>
+                  <div class="need-more-q">Op welke theorie of inzicht baseer je deze aanname?</div>
+                </div>
+              </div>
             </div>
             <div class="section-hint">Per observatie: wat moest het bureau hebben gedacht om die keuze te maken? <em>Merkspecifiek en herleidbaar naar stap 1.</em></div>
             <div class="section-why">Aannames zijn de brug tussen wat je ziet en waarom het zo is, de basis voor je probleemstelling.</div>
@@ -912,6 +1015,14 @@
             <div class="section-head">
               <div class="section-dot" style="background:#6B2A8E">3</div>
               <div class="section-title" style="color:#6B2A8E">Meervoudige waardecreatie</div>
+              <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                <div class="need-more-popup">
+                  <div class="need-more-popup-title">Denkvragen</div>
+                  <div class="need-more-q">Wie mist er nog in jouw overzicht?</div>
+                  <div class="need-more-q">Waar stroomt de waarde niet zoals alle partijen zouden willen?</div>
+                  <div class="need-more-q">Hoe beïnvloeden de belangen van de ene partij die van de andere?</div>
+                </div>
+              </div>
             </div>
             <div class="section-hint">Welke waarde levert de huidige koers voor elke primaire stakeholder? Waar stroomt die waarde niet zoals verwacht? <em>Denk vanuit elke partij afzonderlijk.</em></div>
             <div class="section-why">Een koers raakt nooit alleen het merk. Hier zie je waar de spanningen zitten en waar de echte opening ligt.</div>
@@ -949,6 +1060,14 @@
             <div class="section-head">
               <div class="section-dot" style="background:#9B3060">4</div>
               <div class="section-title" style="color:#9B3060">Probleemstelling</div>
+              <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                <div class="need-more-popup">
+                  <div class="need-more-popup-title">Denkvragen</div>
+                  <div class="need-more-q">Wat maakt dit moment uniek? Waarom kon deze kans alleen nu ontstaan?</div>
+                  <div class="need-more-q">Is je opening een echte kans, of beschrijf je eigenlijk nog de dreiging?</div>
+                  <div class="need-more-q">Welke methode heb je gebruikt om de externe context in kaart te brengen?</div>
+                </div>
+              </div>
             </div>
             <div class="section-hint">Vier slots die samen één lopende redenering vormen. <em>De opening is het kern-slot: welke kans zag het bureau, of had het moeten zien?</em></div>
             <div class="section-why">Zonder deze redenering is de koersuitspraak een mening. Met deze redenering wordt het een onderbouwde keuze.</div>
@@ -986,6 +1105,14 @@
             <div class="section-head">
               <div class="section-dot" style="background:#F4631E">5</div>
               <div class="section-title" style="color:#F4631E">Het gat</div>
+              <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                <div class="need-more-popup">
+                  <div class="need-more-popup-title">Denkvragen</div>
+                  <div class="need-more-q">Wat deed de agency wel, en wat liet die bewust of onbewust liggen?</div>
+                  <div class="need-more-q">Is dit een verbetering van de bestaande campagne, of iets fundamenteel anders?</div>
+                  <div class="need-more-q">Kun je dit gat uitleggen zonder naar je aantekeningen te kijken?</div>
+                </div>
+              </div>
             </div>
             <div class="section-hint">Welk fundamenteel probleem lost de bestaande campagne niet op? <em>Dit is de brug naar de nieuwe koers.</em></div>
             <div class="section-why">Het gat laat zien waar jij verder denkt dan de agency: niet een verbetering maar een strategisch open punt.</div>
@@ -1061,7 +1188,15 @@
           <div class="koers-field">
             <div class="k-stripe k1"></div>
             <div class="k-inner">
-              <div class="k-head"><span class="k-num">01</span><span class="k-name kn1">Doelgroep</span></div>
+              <div class="k-head"><span class="k-num">01</span><span class="k-name kn1">Doelgroep</span>
+                <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                  <div class="need-more-popup">
+                    <div class="need-more-popup-title">Denkvragen</div>
+                    <div class="need-more-q">Is je doelgroep specifiek genoeg, of zou hij op elk merk van toepassing kunnen zijn?</div>
+                    <div class="need-more-q">Wat weet je over deze groep dat deze koers voor hen relevant maakt?</div>
+                  </div>
+                </div>
+              </div>
               <div class="k-hint">Op wie richt de koers zich? Concreet en afgebakend.</div>
               <div class="k-why">Zonder specifieke doelgroep is de koers voor iedereen en daardoor voor niemand.</div>
               <div class="k-prefix">De organisatie richt zich op...</div>
@@ -1072,7 +1207,15 @@
           <div class="koers-field">
             <div class="k-stripe k2"></div>
             <div class="k-inner">
-              <div class="k-head"><span class="k-num">02</span><span class="k-name kn2">Strategische keuze</span></div>
+              <div class="k-head"><span class="k-num">02</span><span class="k-name kn2">Strategische keuze</span>
+                <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                  <div class="need-more-popup">
+                    <div class="need-more-popup-title">Denkvragen</div>
+                    <div class="need-more-q">Verandert er iets aan wat het merk levert, of alleen aan hoe het communiceert?</div>
+                    <div class="need-more-q">Zou je deze keuze ook kunnen verdedigen tegenover de aandeelhouders van het merk?</div>
+                  </div>
+                </div>
+              </div>
               <div class="k-hint">Wat doet het merk anders of nieuw? Niet hoe het communiceert.</div>
               <div class="k-why">Dit is de kern van de koers: een keuze die alleen over communicatie gaat verandert niets aan de geleverde waarde.</div>
               <div class="k-prefix">...door...</div>
@@ -1083,7 +1226,15 @@
           <div class="koers-field">
             <div class="k-stripe k3"></div>
             <div class="k-inner">
-              <div class="k-head"><span class="k-num">03</span><span class="k-name kn3">Doel</span></div>
+              <div class="k-head"><span class="k-num">03</span><span class="k-name kn3">Doel</span>
+                <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                  <div class="need-more-popup">
+                    <div class="need-more-popup-title">Denkvragen</div>
+                    <div class="need-more-q">Is het doel concreet genoeg om over drie jaar te meten of het gelukt is?</div>
+                    <div class="need-more-q">Voor wie precies creëer je waarde, en hoe weet je dat zij dat ook zo zien?</div>
+                  </div>
+                </div>
+              </div>
               <div class="k-hint">Wat levert het op en voor wie?</div>
               <div class="k-why">Een koers zonder doel is een richting zonder bestemming.</div>
               <div class="k-prefix">...om...</div>
@@ -1094,7 +1245,15 @@
           <div class="koers-field">
             <div class="k-stripe k4"></div>
             <div class="k-inner">
-              <div class="k-head"><span class="k-num">04</span><span class="k-name kn4">Onderbouwing</span></div>
+              <div class="k-head"><span class="k-num">04</span><span class="k-name kn4">Onderbouwing</span>
+                <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                  <div class="need-more-popup">
+                    <div class="need-more-popup-title">Denkvragen</div>
+                    <div class="need-more-q">Welke theorie, data of methode onderbouwt deze keuze?</div>
+                    <div class="need-more-q">Is dit je eigen redenering, of heb je bronnen die dit bevestigen?</div>
+                  </div>
+                </div>
+              </div>
               <div class="k-hint">Verwijs naar een inzicht, trend of data uit je analyse op pagina 1.</div>
               <div class="k-why">Dit verbindt de koers met je redenering. Zonder onderbouwing is de koers een aanname.</div>
               <div class="k-prefix">...omdat uit onderzoek blijkt dat...</div>
@@ -1105,7 +1264,15 @@
           <div class="koers-field">
             <div class="k-stripe k5"></div>
             <div class="k-inner">
-              <div class="k-head"><span class="k-num">05</span><span class="k-name kn5">Keuze voor richting</span></div>
+              <div class="k-head"><span class="k-num">05</span><span class="k-name kn5">Keuze voor richting</span>
+                <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                  <div class="need-more-popup">
+                    <div class="need-more-popup-title">Denkvragen</div>
+                    <div class="need-more-q">Wat verliest het merk echt als het deze keuze maakt?</div>
+                    <div class="need-more-q">Is dit een echte keuze, of klinkt het pijnloos? Pijnloos is geen koers.</div>
+                  </div>
+                </div>
+              </div>
               <div class="k-hint">Wat doe je bewust niet? Een duidelijke keuze geeft de koers richting en houvast.</div>
               <div class="k-why">Door te benoemen wat je niet doet, schep je duidelijkheid en voorkom je dat de koers alle kanten op gaat.</div>
               <div class="k-prefix">...daarbij kiest de organisatie er bewust voor om... niet na te streven...</div>
@@ -1116,7 +1283,15 @@
           <div class="koers-field">
             <div class="k-stripe k6"></div>
             <div class="k-inner">
-              <div class="k-head"><span class="k-num">06</span><span class="k-name kn6">Rechtvaardiging</span></div>
+              <div class="k-head"><span class="k-num">06</span><span class="k-name kn6">Rechtvaardiging</span>
+                <div class="need-more">Need more? <span class="need-more-chevron">‹</span>
+                  <div class="need-more-popup">
+                    <div class="need-more-popup-title">Denkvragen</div>
+                    <div class="need-more-q">Kun je in eigen woorden uitleggen hoe verdedigbaar deze koers is?</div>
+                    <div class="need-more-q">Herhaal je de keuze, of leg je echt uit waarom dit de juiste prioriteit is?</div>
+                  </div>
+                </div>
+              </div>
               <div class="k-hint">Waarom is dit de juiste prioriteit? Leg uit, herhaal de keuze niet.</div>
               <div class="k-why">De rechtvaardiging maakt de koers houdbaar en laat zien dat de keuze logisch volgt uit je analyse.</div>
               <div class="k-prefix">...omdat...</div>
