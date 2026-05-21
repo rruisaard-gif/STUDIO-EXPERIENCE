@@ -1067,6 +1067,179 @@
     border-left-color: var(--orange);
   }
 
+  /* ══════════════════════════════
+     RESPONSIVE — MOBIEL
+  ══════════════════════════════ */
+  @media (max-width: 768px) {
+
+    /* Nav */
+    :root { --nav-h: 56px; }
+
+    .nav {
+      padding: 0 12px;
+      gap: 0;
+      justify-content: space-between;
+    }
+
+    .nav-btn {
+      padding: 6px 8px;
+      min-width: 0;
+      border-radius: 6px;
+    }
+
+    .nav-btn .nav-sub { display: none; }
+
+    .nav-btn .nav-label {
+      font-size: 11px;
+    }
+
+    .nav-btn .nav-num {
+      font-size: 8px;
+    }
+
+    .kompas-ring { width: 34px; height: 34px; }
+    .kompas-label { font-size: 6px; }
+
+    .nav-sep { height: 24px; margin: 0 4px; }
+
+    /* Slide padding */
+    .slide { padding: 0; }
+
+    /* Header */
+    .header, .p3-header {
+      padding: 16px 16px 14px;
+    }
+
+    .header-title { font-size: 18px; }
+    .header-sub { font-size: 10px; }
+
+    /* Body */
+    .body {
+      padding: 16px 16px 20px;
+      gap: 14px;
+    }
+
+    /* Section */
+    .section-title { font-size: 14px; }
+    .section-hint, .section-why { padding-left: 26px; font-size: 11px; }
+
+    .section-dot { width: 20px; height: 20px; font-size: 9px; }
+
+    /* Need more */
+    .need-more { font-size: 9px; padding: 2px 8px; }
+    .need-more-popup { width: 240px; right: -10px; }
+
+    /* Inputs */
+    textarea, input[type="text"] {
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+
+    textarea { min-height: 52px; }
+
+    .input-group { padding-left: 26px; }
+    .obs-grid { padding-left: 26px; }
+    .bron-wrap { padding-left: 26px; }
+
+    /* Obs rows */
+    .obs-num { font-size: 9px; }
+
+    /* Campagne grid — stapel op mobiel */
+    .section .input-group > div[style*="grid"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Stakeholder grid — 1 kolom */
+    .stakeholder-grid {
+      padding-left: 26px;
+      grid-template-columns: 1fr;
+    }
+
+    /* Slot rows — smaller label */
+    .slots-grid { padding-left: 26px; }
+
+    .slot-row {
+      grid-template-columns: 64px 1fr;
+      gap: 0 6px;
+    }
+
+    .slot-tag { font-size: 7.5px; padding: 5px 6px; }
+    .slot-tag small { font-size: 6.5px; }
+
+    /* Preview */
+    .preview-wrap { padding: 12px 16px; }
+    .preview-box { font-size: 11px; line-height: 1.85; padding: 10px 12px; }
+
+    /* Koers fields */
+    .body .koers-field { gap: 0 10px; }
+    .k-name { font-size: 12px; }
+    .k-hint, .k-why { font-size: 10px; }
+    .k-prefix { font-size: 9px; }
+
+    /* Footer */
+    .footer { padding: 10px 16px; }
+    .footer-left { font-size: 8px; }
+
+    /* Slide nav buttons */
+    .slide-nav { padding: 12px 16px; }
+    .slide-nav-btn { font-size: 10px; padding: 8px 16px; }
+
+    /* Bronnen */
+    .bronnen-lijst { margin: 0 16px 16px; }
+    .bron-row { grid-template-columns: 70px 1fr; }
+    .bron-type { font-size: 7px; }
+
+    /* Page 3 check rows */
+    .check-row {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .stoplicht {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .sl-btn {
+      flex: 1;
+      text-align: center;
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+
+    .sl-toelichting { gap: 4px; }
+    .sl-desc { font-size: 10px; }
+
+    /* Niveau opties */
+    .niveau-opt { padding: 10px 12px; }
+    .niveau-label { font-size: 12px; }
+    .niveau-desc { font-size: 10px; }
+
+    /* Kernvraag blokken */
+    .kernvraag-q { font-size: 12px; }
+
+    /* Download btn */
+    .download-btn { font-size: 9px; padding: 5px 12px; }
+  }
+
+  @media (max-width: 480px) {
+
+    .nav-btn .nav-label { font-size: 10px; }
+    .nav-btn .nav-num { display: none; }
+    .kompas { display: none; }
+
+    .header-title { font-size: 16px; }
+
+    .slot-row {
+      grid-template-columns: 56px 1fr;
+    }
+
+    .need-more { display: none; }
+
+    .prog-dot { width: 6px; height: 6px; }
+  }
+
   @media print {
     html, body { height: auto; overflow: visible; }
     .nav { display: none; }
